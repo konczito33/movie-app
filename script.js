@@ -1,4 +1,10 @@
-const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=8efd5c56d10b8332b9691c3d750ff1bb'
+const BY_POPULARITY = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=8efd5c56d10b8332b9691c3d750ff1bb&page'
+
+const LIST_URL = 'https://api.themoviedb.org/3/movie/793723/lists?api_key=8efd5c56d10b8332b9691c3d750ff1bb'
+
+const BY_RATING = 'https://api.themoviedb.org/3/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=8efd5c56d10b8332b9691c3d750ff1bb&page'
+
+const FOR_KIDS = 'https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=8efd5c56d10b8332b9691c3d750ff1bb&page'
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w1280/'
 
@@ -16,9 +22,27 @@ const form = document.querySelector('form')
 
 const logo = document.querySelector('.logo')
 
-getMovie(API_URL)
 
 
+getMovie(BY_POPULARITY)
+
+//sorting
+// const sortForm = document.querySelector('.sort')
+
+// const byRating = document.querySelector('.byRating')
+
+// byRating.addEventListener('click', () => {
+//     getMovie(BY_RATING)
+// })
+
+// const forKids = document.querySelector('.forKids')
+
+// forKids.addEventListener('click', () => {
+//     getMovie(FOR_KIDS)
+// })
+
+
+//
 
 
 input.addEventListener('input', buttonOpacity)
@@ -33,6 +57,8 @@ form.addEventListener('submit', (e) => {
     } else {
         window.location.reload()
     }
+
+
 
 })
 
@@ -49,6 +75,13 @@ async function getMovie(url) {
     const res = await fetch(url)
     const data = await res.json()
     showMovie(data.results)
+    if(data.results == ''){
+        errorEl = document.createElement('div')
+        errorEl.classList.add('error')
+        errorEl.textContent = 'We cannot found any matching movie!!!'
+        container.appendChild(errorEl)
+    }
+    console.log(data.results)
 }
 
 function showMovie(movies) {
@@ -64,17 +97,17 @@ function showMovie(movies) {
         const movieHTML = document.createElement('div')
         movieHTML.classList.add('movie')
         movieHTML.innerHTML = `<img class="movie-img" src="${IMG_URL + poster_path}" alt="">
-            <div class="movie-info">
-                <p class="title">${title}</p>
-                <span class="rating ${checkVote(vote_average)}">${vote_average}</span>
-            </div>
-            <div class="overview">
-            <h3>Overview</h3>
-            <p>
-            ${overview}
-            </p>
-            <span class="date">${release_date}</span>
-            </div>`
+        <div class="movie-info">
+        <p class="title">${title}</p>
+        <span class="rating ${checkVote(vote_average)}">${vote_average}</span>
+        </div>
+        <div class="overview">
+        <h3>Overview</h3>
+        <p>
+        ${overview}
+        </p>
+        <span class="date">${release_date}</span>
+        </div>`
 
         container.appendChild(movieHTML)
     })

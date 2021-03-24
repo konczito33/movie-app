@@ -39,7 +39,7 @@ header {
     cursor: pointer;
 }
 
-.logo:focus{
+.logo:focus {
     outline: none;
 }
 
@@ -172,7 +172,7 @@ form {
     width: 100%;
 }
 
-h3{
+h3 {
     display: block;
     padding-bottom: 10px;
 }
@@ -181,24 +181,39 @@ h3{
     transform: translateY(0%);
 }
 
-.date{
+.date {
     display: block;
     font-style: italic;
     padding: 10px 0;
 }
 
+.error {
+    font-size: 30px;
+    color: red;
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+top: 20%;
 
-@media (max-width: 1100px){
-    .container{
+}
+
+
+@media (max-width: 1100px) {
+    .container {
         justify-content: center;
     }
 }
 
 @media (max-width: 660px) {
-    .search{
+    .search {
         width: 150px;
     }
+
     .movie {
         width: 70%;
+    }
+
+    .logo {
+        font-size: 18px;
     }
 }
