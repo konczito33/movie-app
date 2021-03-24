@@ -34,6 +34,13 @@ header {
     font-size: 26px;
     letter-spacing: 1.2px;
     font-weight: bold;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.logo:focus{
+    outline: none;
 }
 
 .logo-span {
@@ -107,6 +114,7 @@ form {
     position: relative;
     justify-self: center;
     width: 400px;
+    min-height: 400px;
     background-color: var(--light);
     margin: 50px 15px;
     overflow: hidden;
@@ -161,6 +169,7 @@ form {
     padding: 10px;
     transform: translateY(100%);
     transition: .3s;
+    width: 100%;
 }
 
 h3{

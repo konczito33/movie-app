@@ -14,6 +14,8 @@ const input = document.querySelector('.search')
 
 const form = document.querySelector('form')
 
+const logo = document.querySelector('.logo')
+
 getMovie(API_URL)
 
 
@@ -27,7 +29,7 @@ form.addEventListener('submit', (e) => {
     input.value = ''
     getMovie(SEARCH_URL + inputValue)
     if (inputValue && inputValue !== '') {
-        getMovie(SEARCH_API + inputValue)
+        getMovie(SEARCH_URL + inputValue)
     } else {
         window.location.reload()
     }
@@ -83,3 +85,7 @@ function checkVote(vote) {
     if (vote >= 5) return 'orange'
     if (vote < 5) return 'red'
 }
+
+logo.addEventListener('click', () => {
+    window.location.reload()
+})
