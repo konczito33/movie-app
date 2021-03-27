@@ -226,6 +226,16 @@ button{
     background-color: var(--light);
     border: none;
     border-radius: 50%;
+    transition: .3s;
+}
+
+button:focus{
+    outline: none;
+    transform: scale(.75);
+}
+
+button:disabled{
+    opacity: .3;
 }
 
 i{
