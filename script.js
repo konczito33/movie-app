@@ -124,6 +124,7 @@ function checkVote(vote) {
 
 logo.addEventListener('click', () => {
     getMovie(BY_POPULARITY)
+    pageNumUpdate()
     window.scrollTo(0, 0)
 })
 
