@@ -41,6 +41,7 @@ header {
 
 .logo:focus {
     outline: none;
+    border-bottom: 1px solid white;
 }
 
 .logo-span {
@@ -221,7 +222,7 @@ h3 {
     color: white;
 }
 
-button{
+.left, .right{
     cursor: pointer;
     background-color: var(--light);
     border: none;
@@ -229,7 +230,7 @@ button{
     transition: .3s;
 }
 
-button:focus{
+.left:focus,.right:focus{
     outline: none;
     transform: scale(.75);
 }

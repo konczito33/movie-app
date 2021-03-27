@@ -24,7 +24,7 @@ const logo = document.querySelector('.logo')
 
 const pageNumEl = document.querySelector('.pageNum')
 
-
+const pageNumContainer = document.querySelector('.switchPage')
 
 getMovie(BY_POPULARITY)
 
@@ -59,6 +59,8 @@ form.addEventListener('submit', (e) => {
     } else {
         window.location.reload()
     }
+
+    pageNumContainer.style.display = 'none'
 
 
 
@@ -124,8 +126,10 @@ function checkVote(vote) {
 
 logo.addEventListener('click', () => {
     getMovie(BY_POPULARITY)
+    page = 1
     pageNumUpdate()
     window.scrollTo(0, 0)
+    pageNumContainer.style.display = 'flex'
 })
 
 let page = 1
