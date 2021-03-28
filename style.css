@@ -187,8 +187,14 @@ h3 {
 }
 
 .error {
+    width: 600px;
+    background-color: var(--light);
+    text-align: center;
+    padding: 20px;
+    border: 2px solid red;
+    border-radius: 20px;
     font-size: 30px;
-    color: red;
+    color: #fff;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -222,7 +228,7 @@ h3 {
     color: white;
 }
 
-.left, .right{
+.left, .right{ 
     cursor: pointer;
     background-color: var(--light);
     border: none;
