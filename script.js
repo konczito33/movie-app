@@ -6,13 +6,13 @@
   const IMG_URL = 'https://image.tmdb.org/t/p/w1280/'
 
   //DOM VARIABLES
-  const container = document.querySelector('.container')
-  const button = document.querySelector('.search-btn')
-  const input = document.querySelector('.search')
-  const form = document.querySelector('form')
-  const logo = document.querySelector('.logo')
-  const pageNumEl = document.querySelector('.pageNum')
-  const pageNumContainer = document.querySelector('.switchPage')
+  const container = document.querySelector('.movies-container')
+  const button = document.querySelector('.search-form__button')
+  const input = document.querySelector('.search-form__input')
+  const form = document.querySelector('.search-form')
+  const logo = document.querySelector('.header__logo')
+  const pageNumEl = document.querySelector('.pages-nav__counter')
+  const pageNumContainer = document.querySelector('.pages-nav')
 
 
 
@@ -26,7 +26,6 @@
         showError()
       }
     } catch (err) {
-      alert(err)
     }
   }
 
@@ -34,7 +33,7 @@
   function showError() {
     errorEl = document.createElement('div')
     errorEl.classList.add('error')
-    errorEl.textContent = 'We cannot found any matching movie!!!'
+    errorEl.textContent = "We can't find any matching movie, please try again."
     container.appendChild(errorEl)
   }
 
@@ -51,17 +50,17 @@
       } = movie
       const movieHTML = document.createElement('div')
       movieHTML.classList.add('movie')
-      movieHTML.innerHTML = `<img class="movie-img" src="${IMG_URL + poster_path}" alt="">
-            <div class="movie-info">
-            <p class="title">${title}</p>
-            <span class="rating ${changeColorOfRating(vote_average)}">${vote_average}</span>
+      movieHTML.innerHTML = `<img class="movie__img" src="${IMG_URL + poster_path}" alt="">
+            <div class="movie__info">
+            <p class="movie__title">${title}</p>
+            <span class="movie__rating ${changeColorOfRating(vote_average)}">${vote_average}</span>
             </div>
             <div class="overview">
-            <h3>Overview</h3>
-            <p>
+            <h3 class="overview__heading">Overview</h3>
+            <p class="overview__text">
             ${overview}
             </p>
-            <span class="date">${release_date}</span>
+            <span class="overview__date">${release_date}</span>
             </div>`
 
       container.appendChild(movieHTML)
@@ -94,19 +93,19 @@
 
   //CHECKS FOR COLOR OF AVERAGE RATING
   function changeColorOfRating(vote) {
-    if (vote >= 7) return 'green'
-    if (vote >= 5) return 'orange'
-    if (vote < 5) return 'red'
+    if (vote >= 7) return 'movie__rating--green'
+    if (vote >= 5) return 'movie__rating--orange'
+    if (vote < 5) return 'movie__rating--red'
   }
 
   //PAGE SWITCHING VARIABLES
   let page = 1
-  const backPageBtn = document.querySelector('.left')
-  const nextPageBtn = document.querySelector('.right')
+  const previousPageBtn = document.querySelector('.pages-nav__previous')
+  const nextPageBtn = document.querySelector('.pages-nav__next')
 
   function checkButton() {
-    if (page === 1) return backPageBtn.disabled = true
-    if (page > 1) return backPageBtn.disabled = false
+    if (page === 1) return previousPageBtn.disabled = true
+    if (page > 1) return previousPageBtn.disabled = false
   }
 
   function updatePageNumber() {
@@ -123,7 +122,7 @@
   })
 
   //BUTTON LISTENERS
-  backPageBtn.addEventListener('click', () => {
+  previousPageBtn.addEventListener('click', () => {
     page--
     checkButton()
     updatePageNumber()
