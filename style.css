@@ -65,10 +65,12 @@ body {
     border-bottom: 1px solid var(--black);
     color: var(--black);
     font-size: 18px;
+    transition: border-color .2s;
 }
 
 .search-form__input:focus {
     outline: none;
+    border-color: orange;
 }
 
 .search-form__label {
@@ -77,15 +79,17 @@ body {
     pointer-events: none;
     font-size: 14px;
     color: orange;
-    transition: transform .2s;
+    transition: transform .2s, font-size .2s;
 }
 
 .search-form__input::-webkit-search-cancel-button {
     display: none;
 }
 
-.search-form__input:focus~.search-form__label {
-    transform: translateY(-150%);
+.search-form__input:focus~.search-form__label,
+.search-form__input:not(:placeholder-shown)~.search-form__label {
+    transform: translateY(-160%);
+    font-size: 12px;
 }
 
 .search-form__button {
