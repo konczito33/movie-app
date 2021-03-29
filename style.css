@@ -30,6 +30,7 @@ body {
 }
 
 .header__logo {
+    position: relative;
     padding: 5px;
     background-color: transparent;
     border: none;
@@ -38,6 +39,16 @@ body {
     letter-spacing: 1.2px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.header__logo::before{
+    content: '';
+    left: -5px;
+    position: absolute;
+    width: 48px;
+    height: 30px;
+    background-color: orange;
+    z-index: -1;
 }
 
 .header__logo-span {
@@ -228,7 +239,7 @@ body {
     height: 50px;
 }
 
-.pageNum {
+.pages-nav__counter {
     color: orange;
 }
 
@@ -276,5 +287,8 @@ body {
 
     .header__logo {
         font-size: 18px;
+    }
+    .header__logo::before{
+        height: 20px;
     }
 }
